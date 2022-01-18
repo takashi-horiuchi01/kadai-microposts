@@ -28,4 +28,9 @@ class User < ApplicationRecord
     self.followings.include?(other_user)
   end
 
+  # タイムライン用の関数
+  def feed_microposts
+    Micropost.where(user_id: self.following_ids + [self.id])
+  end  
+
 end
