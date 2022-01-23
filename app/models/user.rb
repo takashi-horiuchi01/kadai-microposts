@@ -15,6 +15,8 @@ class User < ApplicationRecord
     # お気に入り機能の多対多の関係記述
   has_many :favorites
   has_many :favoritings, through: :favorites, source: :micropost
+  has_many :reverses_of_favorite, class_name: 'Favorite', foreign_key: 'micropost_id'
+  has_many :favorited, through: :reverses_of_favorite, source: :user
 
   # followするためのメソッド
   def follow(other_user)
