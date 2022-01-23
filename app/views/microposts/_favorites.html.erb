@@ -1,0 +1,17 @@
+<% if microposts.any? %>
+  <ul class="list-unstyled">
+    <% microposts.each do |micropost| %>
+      <li class="mb-3 d-flex">
+        <div>
+          <div>
+            <%= micropost.content %>
+          </div>
+          <div>
+            <p><%#= link_to 'View profile', user_path(user), class: "text-decoration-none" %></p>
+          </div>
+        </div>
+      </li>
+    <% end %>
+  </ul>
+  <%== pagy_bootstrap_nav(@pagy) %>
+<% end %>
